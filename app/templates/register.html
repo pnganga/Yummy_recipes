@@ -1,0 +1,60 @@
+ {% extends "base.html" %} 
+ {% block content%}
+<div class="container-fluid" id="jumbo-holder">
+    <h1 class="text-center">Create an account below to start using Yummy Recipes</h1>
+    <div class="jumbotron" id="form-holder">
+        <form action="">
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="text" placeholder="First Name">
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="text" placeholder="Last Name">
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div style="min-height: 30px"></div>
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="text" placeholder="Mobile number">
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="email" placeholder="Email">
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div style="min-height: 30px"></div>
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="password" placeholder="Password">
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-4">
+                    <input class="place-holder" type="password" placeholder="Confirm password">
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div style="min-height: 30px"></div>
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class=" row col-sm-8">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-3">
+                        <input type="submit" value="Create Account" class="submit">
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
