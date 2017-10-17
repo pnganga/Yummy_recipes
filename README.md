@@ -1,36 +1,11 @@
 # Yummy_recipes
 a platform for users to keep track of their awesome recipes and share with others if they so wish.
 
-It contains:
- - Designs
- - Wireframes
- - Yummy Recipes application
+The project is created with flask
+	
+# To run it locally
 
-## Designs
+clone the repo to your desktop, cd into the folder and pip install -r requirements.txt to install dependancies.
 
-Contains HTML and CSS files for UI.
+To run tests, use nosetests test_yummy_recipes.py command
 
-
-## Wireframes
-
-Contains designs for the UI folder.
-
-## Yummy Recipes App Description
-
-Contains a Yummy Recipes flask app that provides a platform for users to keep track of their awesome recipes and share with others if they so wish.
-
-## Features
-
-- Users can create accounts
-- Users can log in
-- Users create, view, update and delete recipe categories 
-- Users can create, view, update or delete recipes in existing categories
-
-## Sign Up
-![Alt text](https://joyytoo.github.io/Yummy-Recipes/Designs/UI/Screenshots/signup.png?raw=true "Sign Up")
-
-## Log in
-![Alt text](https://joyytoo.github.io/Yummy-Recipes/Designs/UI/Screenshots/signin.png?raw=true "Sign In")
-
-## Recipes
-![Alt text](https://joyytoo.github.io/Yummy-Recipes/Designs/UI/Screenshots/rec.png?raw=true "Recipes")
