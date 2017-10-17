@@ -1,0 +1,38 @@
+ {% extends "base.html" %} {% block content%}
+<div class="container-fluid" id="jumbo-holder">
+    <h1 class="text-center">To access your recipes, please log in below:</h1>
+    <div class="jumbotron" id="form-holder">
+        <form method="post" name="login" action="">
+            {{ form.hidden_tag() }}
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    {{ form.email(size=80, class = "place-holder", placeholder=" Email")}}
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div style="min-height: 50px"></div>
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    {{ form.password(size=80, class_="place-holder", placeholder="Password")}}
+              
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div style="min-height: 50px"></div>
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class=" row col-sm-8">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-3">
+                        <input type="submit" value="Log in" class="submit">
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
