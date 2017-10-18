@@ -3,16 +3,17 @@
 <div class="container-fluid" id="jumbo-holder">
     <h1 class="text-center">Create an account below to start using Yummy Recipes</h1>
     <div class="jumbotron" id="form-holder">
-        <form action="">
+        <form method="POST" name="register">
+             {{ form.hidden_tag() }}
             <div class="row text-center">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="text" placeholder="First Name">
+                    {{ form.firstname(size=80, class = "place-holder", placeholder="First Name")}}
                 </div>
                 <br>
                 <br>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="text" placeholder="Last Name">
+                    {{ form.lastname(size=80, class = "place-holder", placeholder="Last Name")}}
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -20,12 +21,12 @@
             <div class="row text-center">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="text" placeholder="Mobile number">
+                    {{ form.mobilenumber(size=80, class = "place-holder", placeholder="Mobile Number")}}
                 </div>
                 <br>
                 <br>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="email" placeholder="Email">
+                    {{ form.email(size=80, class = "place-holder", placeholder=" Email")}}
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -33,12 +34,12 @@
             <div class="row text-center">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="password" placeholder="Password">
+                    {{ form.password(size=80, class = "place-holder", placeholder=" Password")}}
                 </div>
                 <br>
                 <br>
                 <div class="col-sm-4">
-                    <input class="place-holder" type="password" placeholder="Confirm password">
+                    {{ form.password(size=80, class = "place-holder", placeholder=" Password")}}
                 </div>
                 <div class="col-sm-2"></div>
             </div>
