@@ -1,0 +1,57 @@
+ {% extends "base.html" %}
+  {% block content%}
+<div class="container-fluid text-center" id="jumbotron-holder">
+    
+        <h2 class="text-center">Hello John Doe</h2>
+        <div class="jumbotron" id="content-holder">
+
+            <button class="btn btn-large btn-primary">Add a new Recipe</button><br><br>
+            <div class="row text-center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th></th>
+                            <th class="text-center">Recipe Name</th>
+                            <th class="text-center">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          
+                            <td><a href="">View</a></td>
+                            <td class="text-center">Millet flour Ugali</td>
+                            <td class="text-center">Traditional Kenyan</td>
+                            <td><a href=""><p class="text-primary">Edit</p></a></td>
+                            <td><a href=""><p class="text-danger">Delete</p></a></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><a href="">View</a></td>
+                            <td class="text-center">Home made sandwich</td>
+                            <td class="text-center">Snacks</td>
+                            <td><a href=""><p class="text-primary">Edit</p></a></td>
+                            <td><a href=""><p class="text-danger">Delete</p></a></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><a href="">View</a></td>
+                            <td class="text-center">Pan fried Githeri</td>
+                            <td class="text-center">Kenyan</td>
+                            <td><a href=""><p class="text-primary">Edit</p></a></td>
+                            <td><a href=""><p class="text-danger">Delete</p></a></td>
+                        </tr>
+                        <tr>
+                           
+                            <td><a href="">View</a></td>
+                            <td class="text-center">Rice with curry</td>
+                            <td class="text-center">Indian</td>
+                            <td><a href=""><p class="text-primary">Edit</p></a></td>
+                            <td><a href=""><p class="text-danger">Delete</p></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <div class="container-fluid text-center" id="header">
+        <br><br>
+        <div>
+            <h1 id="intro-text">Welcome to Yummy Recipes</h1>
+            <div id="separator"></div>
+            <a href="{{ url_for('register') }}"><button class="btn new">Register</button></a> <span id="in-text">or</span>
+            <a href="{{ url_for('login') }}"><button class="btn new">login</button ></a> 
+        </div>
+    </div>iv>
+    </div>
+    {% endblock %}
