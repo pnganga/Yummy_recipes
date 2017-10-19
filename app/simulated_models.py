@@ -1,19 +1,33 @@
+users_db = []
+
+class UserNotFoundException(Exception):
+    pass
+
+
+class NullUserError(Exception):
+    pass
+
+
+class RecipeNotFoundError(Exception):
+    pass
+
+    
 class Users():
     def __init__(self):
-        self.users = [];
+        self.users = users_db
 
     def add_user(self, user):
         if user:
             if len(self.users) == 0:
-                self.users.append(user)
+                self.users.append(user.user_details)
             else:
                 for u in self.users:
                     if u["email"] == user.email:
-                        return "user already exists"
+                        raise NullUserError("user already exists") 
                     else:
-                        self.users.append(user) 
+                        self.users.append(user.user_details) 
         else:
-            return "Cannot add empty user"
+            raise NullUserError("Cannot add empty user")
 
     def get_all_users(self):
         return self.users

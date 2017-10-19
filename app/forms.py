@@ -12,6 +12,7 @@ class SignUpForm(FlaskForm):
 	mobilenumber = StringField('mobilenumber', validators=[DataRequired()])
 	email = StringField('email', validators=[DataRequired(), Email()])
 	password = PasswordField('password', validators=[DataRequired()])
+	password2 = PasswordField('password2', validators=[DataRequired()])
 
 
     
