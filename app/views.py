@@ -30,7 +30,6 @@ def login():
 	if request.method == 'GET':
 		return render_template('login.html', form = form)
 	elif request.method == 'POST':
-		print "POST"
 		users = simulated_models.Users()
 		available_users = users.get_all_users()
 		if available_users != []:
@@ -52,6 +51,8 @@ def user_recipes():
 	for user in users.get_all_users():
 		if session["logged_in"] in user["email"]:
 			my_user = user
+		else:
+			return redirect('register')
 	recipes = simulated_models.Recipes(session["logged_in"])
 	my_recipes = recipes.fetch_user_recipes()
 	return render_template('user-recipes.html', user_is_logged_in = True, user = my_user, recipes = my_recipes)
@@ -61,11 +62,39 @@ def user_recipes():
 @ensure_logged_in
 def new_recipe():
 	form = NewRecipeForm()
-	return render_template('new-recipe.html', form = form)
+	users = simulated_models.Users()
+	my_user = {}
+	for user in users.get_all_users():
+		if session["logged_in"] in user["email"]:
+			my_user = user
+	if request.method == 'GET':
+		return render_template('new-recipe.html', form = form, user_is_logged_in = True, user = my_user)
+	elif request.method == 'POST':
+		if form.validate_on_submit():
+			# adding a recipe to db
+			recipes = simulated_models.Recipes(session["logged_in"])
+			recipes_available = recipes.all_recipes
+			print recipes_available
+			recipe = simulated_models.Recipe((len(recipes_available)+1),form.name.data, form.content.data, form.category.data, session["logged_in"])
+			recipes.add_recipe(recipe)
+			
+			recipe_categories = simulated_models.RecipeCategorys(session["logged_in"])
+			recipe_categories_available = recipe_categories.all_recipe_categories
+			recipe_category = simulated_models.RecipeCategory((len(recipe_categories_available)+1),form.category.data, session["logged_in"])
+			recipe_categories.add_recipe_category(recipe_category)
+			print 
+			return render_template('/user-recipes.html',user = my_user, recipes = recipe.recipe_details)
+		else:
+			return render_template('register.html', form = form)
 
 @app.route('/new_recipe_category', methods = ['GET', 'POST'])
 @ensure_logged_in
 def new_recipe_category():
-	return render_template('new_recipe_category.html')
+	users = simulated_models.Users()
+	my_user = {}
+	for user in users.get_all_users():
+		if session["logged_in"] in user["email"]:
+			my_user = user
+	return render_template('new_recipe_category.html', user_is_logged_in = True, user = my_user)
 	
     
