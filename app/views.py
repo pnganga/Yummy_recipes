@@ -15,11 +15,9 @@ def register():
 		return render_template('register.html', form = form)
 	elif request.method == 'POST':
 		if form.validate_on_submit():
-			user = {"firstname": form.firstname.data,
-					"lastname": form.lastname.data,
-
-					}
-			users.append(user)
+			users_available = Users.get_all_users()
+			user = Users((len(users_available)+1),form.firstname.data, form.lastname.data, form.email.data, form.mobilenumber.data, ).user_details()
+			Users.add_user(Users)
 			return redirect('login')
 		else:
 			return render_template('register.html', form = form)
