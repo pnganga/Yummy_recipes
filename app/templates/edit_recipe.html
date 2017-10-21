@@ -3,22 +3,21 @@
 	<div class="container-fluid" id="jumbo-holder">
     <h1 class="text-center">{{user.firstname + " " + user.lastname}}</h1>
     <div class="jumbotron" id="form-holder">
-        <form method="POST" name="new-recipe">
-             {{ form.hidden_tag() }}
+        <form method="POST" name="edit-recipe" action="/edit/{{recipe.id}}">
             <div class="row text-center">
            
-                    {{ form.name.data(size=80, class = "place-holder", value: "{{recipe.name}}")}}
+                   
+                    <input type="text" value="{{recipe.name}}" name="name">
                      
             </div>
             <br><br><br>
             <div class="row text-center">
-                
-                    {{ form.category(size=80, class = "place-holder", value="{{ recipe.category }}")}}
+                <input type="text" value="{{recipe.category}}" name="category">
             </div>
             <br><br><br>
             <div class="row text-center">
-               	{{ form.content(size=80, rows='10', cols='50', class = "place-holder", value = "{{ recipe.category }}")}}
-                    
+               	
+                     <textarea name="content" id="" cols="30" rows="10">{{ recipe.content }}</textarea>
                
             </div><br><br><br>
             <div class="row text-center">

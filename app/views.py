@@ -82,7 +82,6 @@ def new_recipe():
 			recipe_categories_available = recipe_categories.all_recipe_categories
 			recipe_category = simulated_models.RecipeCategory((len(recipe_categories_available)+1),form.category.data, session["logged_in"])
 			recipe_categories.add_recipe_category(recipe_category)
-			print 
 			return redirect('user-recipes')
 		else:
 			return render_template('register.html', form = form)
@@ -112,13 +111,14 @@ def edit_recipe(recipe_id):
 		if session["logged_in"] in user["email"]:
 			my_user = user
 	if request.method == 'GET':
-		form = NewRecipeForm(obj=recipe)
-		return render_template('edit_recipe.html', user_is_logged_in = True, form = form, user = my_user, recipe = recipe)
+		
+		return render_template('edit_recipe.html', user_is_logged_in = True, user = my_user, recipe = recipe)
 	elif request.method == 'POST':
-		if form.validate_on_submit():
-			recipe = simulated_models.Recipe(recipe_id,form.name.data, form.content.data, form.category.data, session["logged_in"] )
-			recipe.edit_recipe(recipe_id, recipe)
-			return redirect('user_recipes')
+		print request.form.get('name')
+		if request.form:
+			recipe = simulated_models.Recipe(recipe_id,request.form.get('name'), request.form.get('content'), request.form.get('category'), session["logged_in"] )
+			recipes.edit_recipe(recipe_id, recipe)
+			return redirect('user-recipes')
 
 	
     
