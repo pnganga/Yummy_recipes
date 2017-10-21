@@ -45,7 +45,7 @@ def login():
 
 
 @app.route('/user-recipes')
-@ensure_logged_in
+@ensure_logged_in				
 def user_recipes():
 	users = simulated_models.Users()
 	my_user = {}
@@ -87,14 +87,38 @@ def new_recipe():
 		else:
 			return render_template('register.html', form = form)
 
-@app.route('/new_recipe_category', methods = ['GET', 'POST'])
+@app.route('/view/<recipe_id>', methods = ['GET', 'POST'])
 @ensure_logged_in
-def new_recipe_category():
+def view_recipe(recipe_id):
 	users = simulated_models.Users()
 	my_user = {}
 	for user in users.get_all_users():
 		if session["logged_in"] in user["email"]:
 			my_user = user
-	return render_template('new_recipe_category.html', user_is_logged_in = True, user = my_user)
+	recipes = simulated_models.Recipes(session["logged_in"])
+	recipe = recipes.view_recipe(recipe_id)
+	print recipe
+	return render_template('view_recipe.html', user_is_logged_in = True, user = my_user, recipe = recipe)
+
+@app.route('/edit/<recipe_id>', methods = ['GET', 'POST'])
+@ensure_logged_in
+def edit_recipe(recipe_id):
+	recipes = simulated_models.Recipes(session["logged_in"])
+	recipe = recipes.view_recipe(recipe_id)
+	
+	users = simulated_models.Users()	
+	my_user = {}
+	for user in users.get_all_users():
+		if session["logged_in"] in user["email"]:
+			my_user = user
+	if request.method == 'GET':
+		form = NewRecipeForm(obj=recipe)
+		return render_template('edit_recipe.html', user_is_logged_in = True, form = form, user = my_user, recipe = recipe)
+	elif request.method == 'POST':
+		if form.validate_on_submit():
+			recipe = simulated_models.Recipe(recipe_id,form.name.data, form.content.data, form.category.data, session["logged_in"] )
+			recipe.edit_recipe(recipe_id, recipe)
+			return redirect('user_recipes')
+
 	
     

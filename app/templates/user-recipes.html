@@ -21,11 +21,11 @@
                 <tbody>
                     {% for each_recipe in recipes %}
                     <tr>
-                        <td><a href="">View</a></td>
+                        <td><a href="/view/{{ each_recipe.id }}">View</a></td>
                         <td class="text-center">{{ each_recipe.name }}</td>
                         <td class="text-center">{{ each_recipe.category }}</td>
                         <td>
-                            <a href="">
+                            <a href="/edit/{{ each_recipe.id }}">
                                 <p class="text-primary">Edit</p>
                             </a>
                         </td>

@@ -24,8 +24,6 @@ class Users():
 
     def add_user(self, user):
         if user:
-            print user
-            print user.user_details
             if len(self.users) == 0:
                 self.users.append(user.user_details)
             else:
@@ -92,12 +90,22 @@ class Recipes():
             raise NullUserError("Cannot add empty recipe")
 
 
-    def edit_recipe(self, user_email, recipe_id, new_recipe):
+    def edit_recipe(self, recipe_id, new_recipe):
         for recipe in self.recipes:
-            if recipe_id in recipe["id"] and user_email in recipe["owner"]:
+            if int(recipe_id) == int(recipe["id"]):
                 recipe = new_recipe
             else:
                 raise RecipeNotFoundError("Recipe Not found")
+
+    def view_recipe(self, recipe_id):
+        recipe = {}
+        for rec in self.recipes:
+            print rec
+            if int(recipe_id) == int(rec["id"]):    
+               recipe = rec
+            else:
+                print "not found"
+        return recipe
 
     def fetch_user_recipes(self):
         return self.recipes
