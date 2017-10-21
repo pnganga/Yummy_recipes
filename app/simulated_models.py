@@ -104,7 +104,7 @@ class Recipes():
             if int(recipe_id) == int(rec["id"]):    
                recipe = rec
             else:
-                print "not found"
+               pass
         return recipe
 
     def fetch_user_recipes(self):
