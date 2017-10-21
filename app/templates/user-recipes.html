@@ -1,57 +1,50 @@
- {% extends "base.html" %}
-  {% block content%}
+ {% extends "base.html" %} {% block content%}
 <div class="container-fluid text-center" id="jumbotron-holder">
-    
-        <h2 class="text-center">Hello John Doe</h2>
-        <div class="jumbotron" id="content-holder">
+    <h2 class="text-center">Hello {{user.firstname}}</h2>
+    <div class="jumbotron" id="content-holder">
+        <div class="row">
+            
+                <a href=" {{ url_for( 'new_recipe') }} ">
+                    <button class="btn btn-large btn-primary">Add a new Recipe</button>
+                </a>
+        </div><br><br>
+        <div class="row text-center text-center">
+            {% if recipes %}
 
-            <button class="btn btn-large btn-primary">Add a new Recipe</button><br><br>
-            <div class="row text-center">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            
-                            <th></th>
-                            <th class="text-center">Recipe Name</th>
-                            <th class="text-center">Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          
-                            <td><a href="">View</a></td>
-                            <td class="text-center">Millet flour Ugali</td>
-                            <td class="text-center">Traditional Kenyan</td>
-                            <td><a href=""><p class="text-primary">Edit</p></a></td>
-                            <td><a href=""><p class="text-danger">Delete</p></a></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><a href="">View</a></td>
-                            <td class="text-center">Home made sandwich</td>
-                            <td class="text-center">Snacks</td>
-                            <td><a href=""><p class="text-primary">Edit</p></a></td>
-                            <td><a href=""><p class="text-danger">Delete</p></a></td>
-                        </tr>
-                        <tr>
-                            
-                            <td><a href="">View</a></td>
-                            <td class="text-center">Pan fried Githeri</td>
-                            <td class="text-center">Kenyan</td>
-                            <td><a href=""><p class="text-primary">Edit</p></a></td>
-                            <td><a href=""><p class="text-danger">Delete</p></a></td>
-                        </tr>
-                        <tr>
-                           
-                            <td><a href="">View</a></td>
-                            <td class="text-center">Rice with curry</td>
-                            <td class="text-center">Indian</td>
-                            <td><a href=""><p class="text-primary">Edit</p></a></td>
-                            <td><a href=""><p class="text-danger">Delete</p></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table class="table">
+                
+                <tr>
+                    <th></th>
+                    <th class="text-center">Recipe Name</th>
+                    <th class="text-center">Category</th>
+                </tr>
+                <tbody>
+                    {% for each_recipe in recipes %}
+                    <tr>
+                        <td><a href="/view/{{ each_recipe.id }}">View</a></td>
+                        <td class="text-center">{{ each_recipe.name }}</td>
+                        <td class="text-center">{{ each_recipe.category }}</td>
+                        <td>
+                            <a href="/edit/{{ each_recipe.id }}">
+                                <p class="text-primary">Edit</p>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <p class="text-danger">Delete</p>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+             {% else %}
+            <br><br><br>
+               
+                    <p class="text-center">You have no Recipes Yet</p></div>
+               
+                
+            {% endif %}
             </div>
-        </div>
-    </div>
-    {% endblock %}
+{% endblock %}

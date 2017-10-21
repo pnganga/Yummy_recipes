@@ -1,4 +1,7 @@
 # Yummy_recipes
+
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 a platform for users to keep track of their awesome recipes and share with others if they so wish.
 The project is created with flask
 	
