@@ -3,21 +3,14 @@
     <h2 class="text-center">Hello {{user.firstname}}</h2>
     <div class="jumbotron" id="content-holder">
         <div class="row">
-            <div class="col-sm-6">
+            
                 <a href=" {{ url_for( 'new_recipe') }} ">
                     <button class="btn btn-large btn-primary">Add a new Recipe</button>
                 </a>
-                <br>
-                <br>
-            </div>
-            <div class="col-sm-6">
-                <a href=" {{ url_for( 'new_recipe_category') }} ">
-                    <button class="btn btn-large btn-primary">Add a new Recipe Category</button>
-                </a>
-            </div>
-        </div>
+        </div><br><br>
         <div class="row text-center text-center">
             {% if recipes %}
+
             <table class="table">
                 
                 <tr>
@@ -42,10 +35,11 @@
                             </a>
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
 
             </table>
-            {% endfor %} {% else %}
+             {% else %}
             <br><br><br>
                
                     <p class="text-center">You have no Recipes Yet</p></div>

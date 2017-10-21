@@ -24,6 +24,8 @@ class Users():
 
     def add_user(self, user):
         if user:
+            print user
+            print user.user_details
             if len(self.users) == 0:
                 self.users.append(user.user_details)
             else:
@@ -65,14 +67,49 @@ class User():
 
 # This class is responsible for creating a new recipe from the user inputs
 
+
+# This  class handles logic for adding, retrieving, editing and deleting recipes
+
+class Recipes():
+    def __init__(self, user_email):
+        self.recipes = self.__get_user_recipes(user_email)
+        self.all_recipes = recipe_db
+
+    def __get_user_recipes(self, user_email):
+        user_recipes = []
+        for recipe in recipe_db:
+            if user_email in recipe["owner"]:
+                user_recipes.append(recipe)
+            else:
+                return recipe_db
+        return user_recipes
+
+    def add_recipe(self, recipe):
+        if recipe:
+
+            self.all_recipes.append(recipe.recipe_details) 
+        else:
+            raise NullUserError("Cannot add empty recipe")
+
+
+    def edit_recipe(self, user_email, recipe_id, new_recipe):
+        for recipe in self.recipes:
+            if recipe_id in recipe["id"] and user_email in recipe["owner"]:
+                recipe = new_recipe
+            else:
+                raise RecipeNotFoundError("Recipe Not found")
+
+    def fetch_user_recipes(self):
+        return self.recipes
+
 class Recipe():
-    def __init__(self, recipe_id, name, content, category, owner):
-        self.id = recipe_id
+    def __init__(self, id, name, content, category, owner):
+        self.id = id
         self.name = name
         self.content = content
         self.category = category
         self.owner = owner
-
+    @property
     def recipe_details(self):
         return {
             "id":  self.id,
@@ -91,7 +128,8 @@ class RecipeCategory():
         self.id = recipe_id
         self.name = name
         self.owner = owner
-
+    
+    @property
     def recipe_category_details(self):
         return {
             "id": self.owner,
@@ -101,48 +139,6 @@ class RecipeCategory():
 
     def __repr__(self):
         return "<RecipeCategory %s>".format(self.name)
-# This  class handles logic for adding, retrieving, editing and deleting recipes
-
-class Recipes():
-    def __init__(self, user_email):
-        self.recipes = self.__get_user_recipes(user_email)
-        self.all_recipes = recipe_db
-
-    def __get_user_recipes(self, user_email):
-        user_recipes = []
-        print recipe_db
-        for recipe in recipe_db:
-            if user_email in recipe["owner"]:
-                user_recipes.append(recipe)
-            else:
-                return recipe_db
-        return user_recipes
-
-    def add_recipe(self, recipe):
-        if recipe:
-            if len(self.all_recipes) == 0:
-                self.all_recipes.append(recipe)
-                print self.all_recipes
-             
-            else:
-                for r in self.all_recipes:
-                    if r["name"] == recipe.name:
-                        raise NullUserError("A recipe with that name already exists") 
-                    else:
-                        self.all_recipes.append(recipe.recipe_details) 
-        else:
-            raise NullUserError("Cannot add empty recipe")
-
-
-    def edit_recipe(self, user_email, recipe_id, new_recipe):
-        for recipe in self.recipes:
-            if recipe_id in recipe["id"] and user_email in recipe["owner"]:
-                recipe = new_recipe
-            else:
-                raise RecipeNotFoundError("Recipe Not found")
-
-    def fetch_user_recipes(self):
-        return self.recipes
 
 # This  class handles logic for adding, retrieving, editing and deleting recipe categories
 
@@ -165,11 +161,8 @@ class RecipeCategorys():
             if len(self.all_recipe_categories) == 0:
                 self.all_recipe_categories.append(recipe_category.recipe_category_details)
             else:
-                for rc in self.all_recipe_categories:
-                    if rc["name"] == recipe.name:
-                        raise NullUserError("That category already exists") 
-                    else:
-                        self.all_recipe_categories.append(recipe_category.recipe_category_details) 
+                
+                self.all_recipe_categories.append(recipe_category.recipe_category_details) 
         else:
             raise NullUserError("Cannot add empty recipe category")
 

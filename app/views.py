@@ -45,6 +45,7 @@ def login():
 
 
 @app.route('/user-recipes')
+@ensure_logged_in
 def user_recipes():
 	users = simulated_models.Users()
 	my_user = {}
@@ -74,16 +75,15 @@ def new_recipe():
 			# adding a recipe to db
 			recipes = simulated_models.Recipes(session["logged_in"])
 			recipes_available = recipes.all_recipes
-			print recipes_available
 			recipe = simulated_models.Recipe((len(recipes_available)+1),form.name.data, form.content.data, form.category.data, session["logged_in"])
 			recipes.add_recipe(recipe)
-			
+			# adding recipe category automatically
 			recipe_categories = simulated_models.RecipeCategorys(session["logged_in"])
 			recipe_categories_available = recipe_categories.all_recipe_categories
 			recipe_category = simulated_models.RecipeCategory((len(recipe_categories_available)+1),form.category.data, session["logged_in"])
 			recipe_categories.add_recipe_category(recipe_category)
 			print 
-			return render_template('/user-recipes.html',user = my_user, recipes = recipe.recipe_details)
+			return redirect('user-recipes')
 		else:
 			return render_template('register.html', form = form)
 
