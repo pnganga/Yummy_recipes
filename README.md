@@ -8,10 +8,10 @@ The project is created with flask
 You can view the app online at: https://yummy-recipes-ap.herokuapp.com
 	
 ## To run it locally
-clone the repo to your desktop, cd into the folder and pip install -r requirements.txt to install dependancies.
+clone the repo to your desktop, cd into the folder and ``` pip install -r requirements.txt ``` to install dependancies.
 
 ## Testing 
-To run tests, use nosetests test_yummy_recipes.py command
+To run tests, use ``` nosetests test_yummy_recipes.py ``` command
 
 
 ## Features
@@ -28,10 +28,13 @@ Contains HTML and CSS files for UI.
 
 
 ## Register
-![Alt text](https://pnganga.github.io/register.html)
+![Alt text](https://pnganga.github.io/wireframes/register.png)
 
 ## Log in
-![Alt text](https://pnganga.github.io/login.html)
+![Alt text](https://pnganga.github.io/wireframes/login.png)
 
 ## Recipes
-![Alt text](https://pnganga.github.io/user-recipes.html)
+![Alt text](https://pnganga.github.io/wireframes/user-recipes2.png)
+
+## New recipe
+![Alt text](https://pnganga.github.io/wireframes/new-recipe.png)
