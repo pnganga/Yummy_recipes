@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request, session
 from app import app
 from .forms import LoginForm, SignUpForm, NewRecipeForm
-form app import simulated_models 
+from app import simulated_models 
 from app.ensure_loggedin import ensure_logged_in
 
 
