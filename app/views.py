@@ -96,7 +96,6 @@ def view_recipe(recipe_id):
 			my_user = user
 	recipes = simulated_models.Recipes(session["logged_in"])
 	recipe = recipes.view_recipe(recipe_id)
-	print recipe
 	return render_template('view_recipe.html', user_is_logged_in = True, user = my_user, recipe = recipe)
 
 @app.route('/edit/<recipe_id>', methods = ['GET', 'POST'])
@@ -114,7 +113,6 @@ def edit_recipe(recipe_id):
 		
 		return render_template('edit_recipe.html', user_is_logged_in = True, user = my_user, recipe = recipe)
 	elif request.method == 'POST':
-		print request.form.get('name')
 		if request.form:
 			recipe = simulated_models.Recipe(recipe_id,request.form.get('name'), request.form.get('content'), request.form.get('category'), session["logged_in"] )
 			recipes.edit_recipe(recipe_id, recipe)
