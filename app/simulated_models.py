@@ -100,7 +100,7 @@ class Recipes():
     def view_recipe(self, recipe_id):
         recipe = {}
         for rec in self.recipes:
-            print rec
+          
             if int(recipe_id) == int(rec["id"]):    
                recipe = rec
             else:
