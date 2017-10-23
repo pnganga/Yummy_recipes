@@ -91,12 +91,20 @@ class Recipes():
 
 
     def edit_recipe(self, recipe_id, new_recipe):
-        for recipe in self.recipes:
+        for recipe in recipe_db:
             if int(recipe_id) == int(recipe["id"]):
-                recipe = new_recipe
+                recipe_db[recipe_db.index(recipe)] = new_recipe.recipe_details
             else:
                 raise RecipeNotFoundError("Recipe Not found")
 
+
+    def delete_recipe(self, recipe_id):
+        for recipe in recipe_db:
+            if int(recipe_id) == int(recipe["id"]):
+                del(recipe_db[recipe_db.index(recipe)])
+            else:
+                raise RecipeNotFoundError("Recipe Not found")
+        
     def view_recipe(self, recipe_id):
         recipe = {}
         for rec in self.recipes:

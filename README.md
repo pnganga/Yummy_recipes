@@ -4,6 +4,8 @@
 
 a platform for users to keep track of their awesome recipes and share with others if they so wish.
 The project is created with flask
+
+You can view the app online at: https://yummy-recipes-ap.herokuapp.com
 	
 ## To run it locally
 clone the repo to your desktop, cd into the folder and pip install -r requirements.txt to install dependancies.

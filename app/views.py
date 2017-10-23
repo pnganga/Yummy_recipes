@@ -118,5 +118,18 @@ def edit_recipe(recipe_id):
 			recipes.edit_recipe(recipe_id, recipe)
 			return redirect('user-recipes')
 
+
+@app.route('/delete/<recipe_id>', methods = ['GET', 'POST'])
+@ensure_logged_in
+def delete_recipe(recipe_id):
+	recipes = simulated_models.Recipes(session["logged_in"])	
+	users = simulated_models.Users()	
+	my_user = {}
+	for user in users.get_all_users():
+		if session["logged_in"] in user["email"]:
+			my_user = user
+	recipes.delete_recipe(recipe_id)
+	return redirect('user-recipes')
+
 	
     
